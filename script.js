@@ -1,19 +1,34 @@
-function add(a, b) {
-	return a + b;
+let firstNumber = 0;
+let secondNumber = 0;
+let operator = '';
+
+function add(firstNumber, secondNumber) {
+	return firstNumber + secondNumber;
 };
 
-function subtract(a, b) {
-	return a - b;
+function subtract(firstNumber, secondNumber) {
+	return firstNumber - secondNumber;
 };
 
-function multiply(a) {
-  let totalMulti = 1;
-  a.forEach(element => {
-    totalMulti *= element;
-  })
-  return totalMulti;
+function multiply(firstNumber, secondNumber) {
+  return firstNumber * secondNumber;
 };
 
-function divide(a, b) {
-    return a / b;
+function divide(firstNumber, secondNumber) {
+    return firstNumber / secondNumber;
+}
+
+function operate(firstNumber, operator, secondNumber) {
+    if (operator === '') return;
+
+    switch (operator) {
+        case '+':
+            return add(firstNumber, secondNumber);
+        case '-':
+            return subtract(firstNumber, secondNumber);
+        case '*':
+            return multiply(firstNumber, secondNumber);
+        case '/':
+            return divide(firstNumber, secondNumber);
+    }
 }
