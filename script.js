@@ -1,21 +1,27 @@
-let firstNumber = 0;
-let secondNumber = 0;
+// Operation functions
+let firstNumber = '';
+let secondNumber = '';
 let operator = '';
 
 function add(firstNumber, secondNumber) {
-	return firstNumber + secondNumber;
+	let result = parseInt(firstNumber) + parseInt(secondNumber);
+    return console.log(result);
 };
 
 function subtract(firstNumber, secondNumber) {
-	return firstNumber - secondNumber;
+	let result = parseInt(firstNumber) - parseInt(secondNumber);
+    console.log(result);
 };
 
 function multiply(firstNumber, secondNumber) {
-  return firstNumber * secondNumber;
+  let result = parseInt(firstNumber) * parseInt(secondNumber);
+  return console.log(result);
 };
 
 function divide(firstNumber, secondNumber) {
-    return firstNumber / secondNumber;
+    if (secondNumber === '0') return console.log('ERROR');
+    let result = parseInt(firstNumber) / parseInt(secondNumber);
+    return console.log(result);
 }
 
 function operate(firstNumber, operator, secondNumber) {
@@ -32,3 +38,39 @@ function operate(firstNumber, operator, secondNumber) {
             return divide(firstNumber, secondNumber);
     }
 }
+
+// Interactivity w/ buttons
+
+const buttons = document.getElementById('buttons');
+let isOperatorChosen = false;
+
+buttons.addEventListener('click', (e) => {
+    
+    let chosenDigit = e.target.closest('.digit');
+    if (!chosenDigit) return;
+
+    if (isOperatorChosen === false) {
+        firstNumber += chosenDigit.textContent;
+        console.log(firstNumber);
+    } else if (isOperatorChosen === true) {
+        secondNumber += chosenDigit.textContent;
+        console.log(secondNumber);
+    }    
+})
+
+buttons.addEventListener('click', (e) => {
+    let chosenOperator = e.target.closest('.operator');
+    if (!chosenOperator) return;
+
+    operator = chosenOperator.textContent;
+    console.log(operator);
+
+    return isOperatorChosen = true;
+})
+
+buttons.addEventListener('click', (e) => {
+    let doOperate = e.target.closest('.operate');
+    if (!doOperate) return;
+
+    operate(firstNumber, operator, secondNumber);
+})
