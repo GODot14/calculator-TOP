@@ -2,30 +2,43 @@
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
+const display = document.querySelector('#display');
+
+function reset() {
+    firstNumber = ''
+    secondNumber = '';
+    operator = '';
+    display.textContent = '0';
+}
 
 function add(firstNumber, secondNumber) {
 	let result = parseInt(firstNumber) + parseInt(secondNumber);
+    reset();
     return console.log(result);
 };
 
 function subtract(firstNumber, secondNumber) {
 	let result = parseInt(firstNumber) - parseInt(secondNumber);
+    reset();
     console.log(result);
 };
 
 function multiply(firstNumber, secondNumber) {
   let result = parseInt(firstNumber) * parseInt(secondNumber);
+  reset();
   return console.log(result);
 };
 
 function divide(firstNumber, secondNumber) {
     if (secondNumber === '0') return console.log('ERROR');
     let result = parseInt(firstNumber) / parseInt(secondNumber);
+    reset();
     return console.log(result);
 }
 
 function operate(firstNumber, operator, secondNumber) {
     if (operator === '') return;
+    isOperatorChosen = false;
 
     switch (operator) {
         case '+':
