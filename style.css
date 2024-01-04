@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#calculator {
+    width: 700px;
+    height: 700px;
+    border: solid black 2px;
+    margin: 10px 10px;
+}
+
+#display {
+    border: solid black 2px;
+    margin: 15px 15px;
+    padding: 0 15px;
+    height: 20%;
+    font-size: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#buttons {
+    border: solid black 2px;
+    margin: 15px 15px;
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    margin: 15px 15px;
+    width: 100px;
+    height: 100px;
+    font-size: larger;
+}
