@@ -1,3 +1,8 @@
+// TO-DO :
+// Si operation deja faite => reset
+// ajouter dans reset ~isOperateDone ~reussir a faire une initialisation
+// Ranger tout avec des comments crtl /
+
 // Operation functions
 let firstNumber = '';
 let secondNumber = '';
@@ -13,8 +18,8 @@ function reset() {
 
 function add(firstNumber, secondNumber) {
 	let result = parseInt(firstNumber) + parseInt(secondNumber);
-    reset();
-    return console.log(result);
+    // reset();
+    return display.textContent = result;
 };
 
 function subtract(firstNumber, secondNumber) {
@@ -64,9 +69,11 @@ buttons.addEventListener('click', (e) => {
 
     if (isOperatorChosen === false) {
         firstNumber += chosenDigit.textContent;
+        display.textContent = firstNumber;
         console.log(firstNumber);
     } else if (isOperatorChosen === true) {
         secondNumber += chosenDigit.textContent;
+        display.textContent = firstNumber + ' ' + operator + ' ' + secondNumber;
         console.log(secondNumber);
     }    
 })
@@ -76,6 +83,7 @@ buttons.addEventListener('click', (e) => {
     if (!chosenOperator) return;
 
     operator = chosenOperator.textContent;
+    display.textContent += ' ' + operator;
     console.log(operator);
 
     return isOperatorChosen = true;
