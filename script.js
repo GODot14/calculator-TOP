@@ -18,27 +18,27 @@ function reset() {
 
 function add(firstNumber, secondNumber) {
 	let result = parseInt(firstNumber) + parseInt(secondNumber);
-    // reset();
+    reset();
     return display.textContent = result;
 };
 
 function subtract(firstNumber, secondNumber) {
 	let result = parseInt(firstNumber) - parseInt(secondNumber);
     reset();
-    console.log(result);
+    return display.textContent = result;
 };
 
 function multiply(firstNumber, secondNumber) {
   let result = parseInt(firstNumber) * parseInt(secondNumber);
   reset();
-  return console.log(result);
+  return display.textContent = result;
 };
 
 function divide(firstNumber, secondNumber) {
     if (secondNumber === '0') return console.log('ERROR');
     let result = parseInt(firstNumber) / parseInt(secondNumber);
     reset();
-    return console.log(result);
+    return display.textContent = result;
 }
 
 function operate(firstNumber, operator, secondNumber) {
@@ -70,11 +70,9 @@ buttons.addEventListener('click', (e) => {
     if (isOperatorChosen === false) {
         firstNumber += chosenDigit.textContent;
         display.textContent = firstNumber;
-        console.log(firstNumber);
     } else if (isOperatorChosen === true) {
         secondNumber += chosenDigit.textContent;
         display.textContent = firstNumber + ' ' + operator + ' ' + secondNumber;
-        console.log(secondNumber);
     }    
 })
 
@@ -84,7 +82,6 @@ buttons.addEventListener('click', (e) => {
 
     operator = chosenOperator.textContent;
     display.textContent += ' ' + operator;
-    console.log(operator);
 
     return isOperatorChosen = true;
 })
