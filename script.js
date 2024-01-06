@@ -3,14 +3,11 @@
 // ajouter dans reset ~isOperateDone ~reussir a faire une initialisation
 // Ranger tout avec des comments crtl /
 
-// Vars
-
+// Operation functions
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
 const display = document.querySelector('#display');
-
-// Functions
 
 function reset() {
     firstNumber = ''
@@ -28,7 +25,7 @@ function add(firstNumber, secondNumber) {
 function subtract(firstNumber, secondNumber) {
 	let result = parseInt(firstNumber) - parseInt(secondNumber);
     reset();
-    return display.textContent = result;
+    console.log(result);
 };
 
 function multiply(firstNumber, secondNumber) {
@@ -61,6 +58,9 @@ function operate(firstNumber, operator, secondNumber) {
 }
 
 // Interactivity w/ buttons
+
+const buttons = document.getElementById('buttons');
+let isOperatorChosen = false;
 
 buttons.addEventListener('click', (e) => {
     
