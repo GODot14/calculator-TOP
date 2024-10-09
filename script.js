@@ -9,35 +9,37 @@ let secondNumber = '';
 let operator = '';
 const display = document.querySelector('#display');
 
-function reset() {
-    firstNumber = ''
+function reset(lastResult) {
+    firstNumber = lastResult;
     secondNumber = '';
     operator = '';
-    display.textContent = '0';
+    isOperatorChosen = false;
+    display.textContent = firstNumber;
 }
 
 function add(firstNumber, secondNumber) {
 	let result = parseInt(firstNumber) + parseInt(secondNumber);
-    reset();
+    reset(result);
+    console.log(result);
     return display.textContent = result;
 };
 
 function subtract(firstNumber, secondNumber) {
 	let result = parseInt(firstNumber) - parseInt(secondNumber);
-    reset();
-    console.log(result);
+    reset(result);
+    return display.textContent = result;
 };
 
 function multiply(firstNumber, secondNumber) {
   let result = parseInt(firstNumber) * parseInt(secondNumber);
-  reset();
+  reset(result);
   return display.textContent = result;
 };
 
 function divide(firstNumber, secondNumber) {
-    if (secondNumber === '0') return console.log('ERROR');
+    if (secondNumber === '0') return console.log('ERROR'); 
     let result = parseInt(firstNumber) / parseInt(secondNumber);
-    reset();
+    reset(result);
     return display.textContent = result;
 }
 
@@ -81,7 +83,7 @@ buttons.addEventListener('click', (e) => {
     if (!chosenOperator) return;
 
     operator = chosenOperator.textContent;
-    display.textContent += ' ' + operator;
+    display.textContent += ' ' + operator
 
     return isOperatorChosen = true;
 })
@@ -91,4 +93,11 @@ buttons.addEventListener('click', (e) => {
     if (!doOperate) return;
 
     operate(firstNumber, operator, secondNumber);
+})
+
+buttons.addEventListener('click', (e) => {
+    let clearContent = e.target.closest('.clear');
+    if (!clearContent) return;
+
+    reset('');
 })
