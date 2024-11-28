@@ -13,7 +13,6 @@ function reset(lastResult) {
     firstNumber = lastResult;
     secondNumber = '';
     operator = '';
-    isOperatorChosen = false;
     display.textContent = firstNumber;
 }
 
@@ -82,8 +81,14 @@ buttons.addEventListener('click', (e) => {
     let chosenOperator = e.target.closest('.operator');
     if (!chosenOperator) return;
 
-    operator = chosenOperator.textContent;
-    display.textContent += ' ' + operator
+    if (isOperatorChosen === false) {
+        operator = chosenOperator.textContent;
+        display.textContent += ' ' + operator;
+    } else if (isOperatorChosen === true) {
+        operate(firstNumber, operator, secondNumber);
+        operator = chosenOperator.textContent;
+        display.textContent += ' ' + operator;
+    }
 
     return isOperatorChosen = true;
 })
