@@ -36,7 +36,7 @@ function multiply(firstNumber, secondNumber) {
 };
 
 function divide(firstNumber, secondNumber) {
-    if (secondNumber === '0') return console.log('ERROR'); 
+    if (secondNumber === '0') return errorMessage(); 
     let result = parseInt(firstNumber) / parseInt(secondNumber);
     reset(result);
     return display.textContent = result;
@@ -56,6 +56,13 @@ function operate(firstNumber, operator, secondNumber) {
         case '/':
             return divide(firstNumber, secondNumber);
     }
+}
+
+function errorMessage() {
+    reset('');
+    isOperatorChosen = false;
+    display.textContent = 'ERROR';
+    return;
 }
 
 // Interactivity w/ buttons
@@ -97,6 +104,8 @@ buttons.addEventListener('click', (e) => {
     let doOperate = e.target.closest('.operate');
     if (!doOperate) return;
 
+    if (secondNumber === '') return errorMessage();
+    
     operate(firstNumber, operator, secondNumber);
 })
 
